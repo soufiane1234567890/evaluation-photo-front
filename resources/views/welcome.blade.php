@@ -14,7 +14,7 @@
                                 <div class="carousel-item active">
                                     <img class="d-block w-100 bg-image" src="{{ asset('images/photo.jpg') }}" height="500px"
                                         alt="First slide" style="object-fit: cover;">
-                                    <div class="carousel-caption d-none d-md-block">
+                                    <div class="carousel-caption d-none d-md-block" style="margin-bottom: 9.5rem;">
                                         <h2>l'Charles Cantin - Photographe</h2>
                                     </div>
                                 </div>
