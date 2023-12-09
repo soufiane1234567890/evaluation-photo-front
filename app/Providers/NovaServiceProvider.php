@@ -32,9 +32,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         parent::boot();
 
         Nova::mainMenu(function (Request $request) {
-            $userRole = $request->user()->role;
-            switch ($userRole) {
-                case 1: // Administrateur
+           
                     return [
                         MenuSection::dashboard(Main::class)->icon('chart-bar'),
         
@@ -42,17 +40,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                             MenuItem::resource(Categorie::class),
                         ])->icon('tag'),
         
-                        MenuSection::make('Articles', [
+                        MenuSection::make('Tarifs', [
                             MenuItem::resource(Post::class),
                         ])->icon('cube'),
-        
-                        // MenuSection::make('Tags', [
-                        //     MenuItem::resource(Tag::class),
-                        // ])->icon('hashtag'),
-        
-                        MenuSection::make('Commentaires', [
-                            MenuItem::resource(Comment::class),
-                            ])->icon('chat-alt-2'),
         
                         MenuSection::make('Utilisateurs',  [
                             MenuItem::resource(User::class),
@@ -61,45 +51,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                         MenuSection::make('Contact',  [
                             MenuItem::resource(Contact::class),
                         ])->icon('chat'),
-
-                        MenuSection::make('Newsletter',  [
-                            MenuItem::resource(Newsletter::class),
-                        ])->icon('mail'),
         
-                        MenuSection::make('Medias',  [
+                        MenuSection::make('Galerie',  [
                             MenuItem::resource(Medias::class),
                         ])->icon('photograph'),
                     ];
-                    break;
-                case 2: // Editeur
-                    return [
-                        MenuSection::dashboard(Main::class)->icon('chart-bar'),
-                        MenuSection::make('Catégories', [
-                            MenuItem::resource(Categorie::class),
-                        ])->icon('tag'),
+                 
         
-                        MenuSection::make('Articles', [
-                            MenuItem::resource(Post::class),
-                        ])->icon('cube'),
-        
-                        // MenuSection::make('Tags', [
-                        //     MenuItem::resource(Tag::class),
-                        // ])->icon('hashtag'),
-        
-                        MenuSection::make('Commentaires', [
-                            MenuItem::resource(Comment::class),
-                            ])->icon('chat-alt-2'),
-        
-                    ];
-                    break;
-                case 3: // Utilisateur
-                
-                    abort(403, 'Accès non autorisé.');
-                    break;
-                default:
-                    // Si le rôle n'est pas défini, refuser l'accès
-                    abort(403, 'Accès non autorisé.');
-            }
             
         });
     }

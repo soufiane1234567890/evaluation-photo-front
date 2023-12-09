@@ -47,8 +47,6 @@
             margin-bottom: 8px;
         }
 
-
-
         .comment-box {
         border: 1px solid #ccc;
         padding: 10px;
@@ -65,7 +63,6 @@
         .badge {
         margin-right: 10px;
         }
-
 
         footer {
             background-color: #f8f9fa;
@@ -85,7 +82,7 @@
     <div id="app">
         <header>
             <nav class="container navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="/">Blog</a>
+                <a class="navbar-brand" href="/"><img src="{{ asset('images/logo-charle.png') }}" alt="logo" height="40"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -96,10 +93,10 @@
                             <a class="nav-link" href="/">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('articles') }}">Articles</a>
+                            <a class="nav-link" href="{{ route('galerie') }}">Galerie</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('apropos') }}">À propos</a>
+                            <a class="nav-link" href="{{ route('tarifs') }}">Tarifs et prestations</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('contact') }}">Contact</a>
@@ -110,42 +107,27 @@
 
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                      
-                    @if (Route::has('login'))
                         <ul class="navbar-nav">
-                            @auth
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+                          
+                            <li class="nav-item">
+                                <a class="btn btn-outline-secondary nav-link mr-2"
+                                    href="#"><i class="fab fa-facebook"></i></a>
                             </li>
-                            @else
-                                <li class="nav-item">
-                                    <a class="btn btn-outline-secondary nav-link mr-2"
-                                        href="{{ route('login') }}">Connexion</a>
-                                </li>
-                                @if (Route::has('register'))
-                                    <li class="nav-item">
-                                        <a class="btn btn-outline-info nav-link"
-                                            href="{{ route('register') }}">Inscription</a>
-                                    </li>
-                                @endif
-                            @endauth
+                            <li class="nav-item">
+                                <a class="btn btn-outline-secondary nav-link mr-2"
+                                    href="#"><i class="fab fa-instagram"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-secondary nav-link mr-2"
+                                    href="#"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-secondary nav-link mr-2"
+                                    href="#"><i class="fab fa-tiktok"></i></a>
+                            </li>
+                             
                         </ul>
 
-
-                    @endif
                 </div>
             </nav>
         </header>
@@ -156,6 +138,9 @@
         </main>
     </div>
 
+    <footer>
+        <p>© 2023 Charles Photo</p>
+    </footer>
   
 </body>
 

@@ -67,12 +67,7 @@ class User extends Resource
                 ->onlyOnForms()
                 ->creationRules('required', Rules\Password::defaults())
                 ->updateRules('nullable', Rules\Password::defaults()),
-            Select::make('Role')->options([
-                '1' => 'Administrateur',
-                '2' => 'Editeur',
-                '3' => 'Utilisateur',
-            ])->displayUsingLabels()->rules('required'),
-            HasMany::make('Articles', 'posts', Post::class),
+           
         ];
     }
 

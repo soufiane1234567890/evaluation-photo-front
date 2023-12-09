@@ -1,46 +1,80 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Projet de Site Vitrine de Photographie
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
- <h1>Blog sur Laravel et Nova</h1>
-  <p>Ce projet est un blog réalisé avec le framework PHP Laravel et l'outil d'administration Nova. Le but de ce projet est de créer une plateforme permettant la publication et la gestion de contenus éditoriaux.</p>
-  
-  <h2>Fonctionnalités</h2>
-  <ul>
-    <li>Gestion des articles : création, édition, suppression, publication</li>
-    <li>Gestion des catégories d'articles</li>
-    <li>Gestion des utilisateurs : création, édition, suppression, rôles</li>
-    <li>Gestion des commentaires : validation, suppression</li>
-    <li>Tableau de bord pour une vue d'ensemble des statistiques du blog</li>
-  </ul>
-  
-  <h2>Pré-requis</h2>
-  <ul>
-    <li>PHP 7.3 ou supérieur</li>
-    <li>MySQL ou PostgreSQL</li>
-    <li>Composer</li>
-  </ul>
-  
-  <h2>Installation</h2>
-  <ol>
-    <li>Cloner le dépôt git</li>
-    <li>Installer les dépendances avec la commande <code>composer install --ignore-platform-reqs</code></li>
-    <li>Configurer les variables d'environnement dans le fichier <code>.env</code></li>
-    <li>Créer la base de données avec la commande <code>php artisan migrate</code></li>
-    <li> Créer un nouvelle utilisateur sur avec la commande <code>php artisan nova:user</code> et renseigner les infos</li>
-    <li>Lancer le serveur de développement avec la commande <code>php artisan serve</code></li>
-  </ol>
-  
-  <h2>Utilisation</h2>
-  <p>Le projet est accessible depuis un navigateur à l'adresse <code>http://localhost:8000</code>. Pour accéder à l'outil d'administration Nova, rendez-vous sur l'URL <code>http://localhost:8000/nova</code> et connectez-vous avec un compte utilisateur ayant les droits d'administration.</p>
-  <p> il est aussi en ligne pour la correction sur le lien => https://foruminfo.net/</p>
-  
-  <h2>Contribution</h2>
-  <p>Les contributions sont les bienvenues ! N'hésitez pas à signaler des problèmes, à faire des suggestions ou à envoyer des pull requests.</p>
-  
-  <h2>Auteur</h2>
-  <p>Ce projet a été réalisé par Soufiane Ikadarne dans le cadre d'un projet de l'evaluation de Studi.</p>
+Bienvenue dans le projet de site vitrine de photographie basé sur Laravel 9 et Nova 4.
+
+## Installation en Local
+
+### Prérequis
+Assure-toi d'avoir les éléments suivants installés sur ta machine :
+- PHP >= 8.0
+- Composer
+- Node.js
+- MySQL
+
+### Étapes d'Installation
+
+1. **Clone le projet depuis le repository GitHub :**
+    ```bash
+    git clone https://github.com/soufiane1234567890/evaluation-photo-front.git
+    ```
+
+2. **Navigue vers le répertoire du projet :**
+    ```bash
+    cd evaluation-photo-front
+    ```
+
+3. **Installe les dépendances PHP avec Composer :**
+    ```bash
+    composer install
+    ```
+
+4. **Installe les dépendances JavaScript avec npm :**
+    ```bash
+    npm install
+    ```
+
+5. **Copie le fichier d'environnement :**
+    ```bash
+    cp .env.example .env
+    ```
+
+6. **Configure les paramètres de la base de données dans le fichier `.env`.**
+
+7. **Génère la clé d'application Laravel :**
+    ```bash
+    php artisan key:generate
+    ```
+
+8. **Exécute les migrations pour créer les tables de la base de données :**
+    ```bash
+    php artisan migrate
+    ```
+
+9. **Démarre le serveur local :**
+    ```bash
+    php artisan serve
+    ```
+10. **mettre la base de donnée**
+a la racine du projet vous avez la base de donnée (evaluation.sql)que vous allez importé dans votre mysql 
+mettez les acces dans le fichier .env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=evaluation
+DB_USERNAME=root
+DB_PASSWORD=
+11. **Visite http://localhost:8000 dans ton navigateur.**
+
+## Installation en Ligne
+
+Pour déployer le projet en ligne, tu peux suivre les étapes ci-dessus en adaptant la configuration du serveur et de la base de données dans le fichier `.env`.
+
+## Accès au Backoffice
+
+Après l'installation en local, tu peux accéder au backoffice de Nova à l'adresse suivante : http://localhost:8000/admin.
+
+Utilise les identifiants par défaut ou crée un compte administrateur selon les besoins.
+
+Identifiants par défaut :
+- Email: admin@gmail.com
+- Mot de passe: password

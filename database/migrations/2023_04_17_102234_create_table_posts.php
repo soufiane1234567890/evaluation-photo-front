@@ -17,12 +17,10 @@ class CreateTablePosts extends Migration
             $table->id();
             $table->integer('user_id')->index();
             $table->string('title');
-            $table->string('slug');
             $table->text('content');
-            $table->string('summary')->nullable();
-            $table->string('image')->nullable();
+            $table->string('prix')->nullable();
+            $table->string('icon')->nullable();
             $table->string('status')->nullable();
-            $table->integer('view_count')->nullable();
             $table->timestamps();
         });
     }

@@ -76,8 +76,4 @@
             <br><br>
         </form>
     </section>
-
-    <footer>
-        <p>© 2023 Blog</p>
-    </footer>
 @endsection

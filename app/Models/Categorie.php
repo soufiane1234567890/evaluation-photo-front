@@ -12,14 +12,6 @@ class Categorie extends Model
 
     protected $table ='categories';
 
-    // public function post()
-    // {
-    //     return $this->hasMany(Post::class);
-    // }
 
-    public function getNumberItemByCategorie($id){
-         $number = count(Post::where('categorie_id', $id)->get());
-         return $number;
-    }
     
 }

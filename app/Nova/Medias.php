@@ -2,10 +2,12 @@
 
 namespace App\Nova;
 
+use App\Models\Categorie;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -49,7 +51,19 @@ class Medias extends Resource
             Text::make('Titre', 'file_name')
                 ->sortable()
                 ->rules('required', 'max:255'),
-            Image::make('Charger une image', 'file_path')->disk('public')->rules('required'),
+            Select::make('Catégorie', 'categorie_id')
+                ->searchable()
+                ->options(Categorie::all()
+                    ->pluck('name', 'id'))
+                ->rules('required'),
+            Image::make('Charger une image', 'file_path')
+            ->help('Upload an image to display as hero')
+            ->disk('public')
+            ->maxWidth(200)
+            ->prunable()
+            ->creationRules('required')
+            ->deletable(false),
+            // ->disk('public')->rules('required'),
         ];
     }
 
@@ -98,6 +112,6 @@ class Medias extends Resource
     }
 
     public static function label() {
-        return 'Images';
+        return 'Galeries';
     }
 }

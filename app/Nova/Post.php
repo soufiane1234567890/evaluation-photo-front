@@ -12,6 +12,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 use Emilianotisato\NovaTinyMCE\NovaTinyMCE;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Fields\Image;
@@ -59,35 +60,19 @@ class Post extends Resource
             Hidden::make('User ID', 'user_id')
                 ->default(auth()->id()),
 
-            Select::make('Catégorie', 'categorie_id')
-                ->searchable()
-                ->options(Categorie::all()
-                    ->pluck('name', 'id'))
-                ->rules('required'),
 
-            Text::make('Titre Post', 'title')
+            Text::make('Titre Tarif', 'title')
                 ->sortable()
                 ->rules('required', 'max:255'),
-            Slug::make('Slug')
-                ->sortable()
-                ->rules('required', 'max:255')->from('title')->separator('_'),
+
             NovaTinyMCE::make('Description', 'content'),
-            Text::make('Résumé de l\'article', 'summary')
+            Currency::make('Prix Tarif (0 si personnalisé)', 'prix')
                 ->sortable()
                 ->rules('required', 'max:255'),
-            Image::make('Image de couverture', 'image')->disk('public'),
-
+            Text::make('Fa Icon Name', 'icon')
+                ->sortable()
+                ->rules('max:255'),
             Boolean::make('Active', 'status'),
-            Hidden::make('Nombre de view', 'view_count')
-                ->default(0),
-            HasMany::make('Commentaires', 'comments', Comment::class),
-
-            Tags::make('Tags')->withLinkToTagResource(),
-            
-            
-            
-            
-            
 
         ];
     }
@@ -145,15 +130,8 @@ class Post extends Resource
 
     public static function label()
     {
-        return 'Articles';
+        return 'Tarif';
     }
 
-    public static function indexQuery(NovaRequest $request, $query)
-    {
-        if ($request->user()->role == 2) {
-            $user_id = $request->user()->id;
-            // Filtrer les articles en fonction de l'utilisateur connecté
-            return $query->where('user_id', $user_id);
-        }
-    }
+
 }

@@ -51,9 +51,4 @@ class User extends Authenticatable
     {
         return $this->hasRole('super-admin');
     }
-
-    public function posts()
-    {
-        return $this->hasMany(Post::class);
-    }
 }
